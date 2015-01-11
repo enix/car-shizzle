@@ -1,0 +1,69 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>autotrader data</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="styles/vendor.css">
+  <link rel="stylesheet" href="styles/app.css">
+  <script src="scripts/vendor.js"></script>
+  <script src="scripts/app.js"></script>
+  <script>require('init');</script>
+</head>
+<body>
+    <header class="header-container" id="header-container">
+        <h1></h1>
+    </header>
+
+  <div class="container outer-container">
+    <div class="page-container" id="page-container">
+
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="milageRange" class="col-sm-2 control-label">Milage Range</label>
+          <div class="col-sm-10">
+            <div class="form-group">
+              <div class="col-sm-9">
+                <div class="form-control" id="milage-slider"></div>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" id="milage-range" class="form-control" readonly value="10000 km - 200000 km">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="priceRange" class="col-sm-2 control-label">Price Range</label>
+          <div class="col-sm-10">
+            <div class="form-group">
+              <div class="col-sm-9">
+                <div class="form-control" id="price-slider"></div>
+              </div>
+              <div class="col-sm-3">
+                <input type="text" id="price-range" class="form-control" readonly value="€ 5000 - € 15000">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="x-axis" class="col-sm-2 control-label">Category</label>
+          <div class="col-sm-10">
+            <select id="x-axis" class="form-control">
+              <option value="milage">kilometers</option>
+              <option value="months">maanden</option>
+              <option value="milage-per-month">kilometers per maand</option>
+              <option value="milage-per-price">kilometers per prijs</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <div id="chart" style="width:100%; height:400px;"></div>
+    </div>
+  </div>
+</body>
+</html>

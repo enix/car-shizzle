@@ -1,0 +1,20 @@
+{
+  "name": "scrape",
+  "version": "1.0.0",
+  "description": "Autotrader Scraper",
+  "main": "index.ls",
+  "scripts": {
+    "start": "node_modules/.bin/lsc index.ls",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ernst Naezer",
+  "license": "Apache 2",
+  "dependencies": {
+    "LiveScript": "^1.3.1",
+    "cheerio": "^0.18.0",
+    "prelude-ls": "^1.1.1",
+    "q": "^1.1.2",
+    "q-io": "^1.11.6",
+    "queue": "^3.0.10"
+  }
+}
