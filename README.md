@@ -21,6 +21,15 @@ In the `site` folder run
 
 Calling changing you car preferences 'configuring' would overselling the current state of the code :)
 
-Take a look at the scraper code to change you favourite car and model. Also don't forget the color mapping table in the `site`.
+Take a look at the `scrape` code to change you favourite car and model. Also don't forget the color mapping table in the `site`.
+
+## Links
+
+Writting in LiveScript using Bruch. These might come in handy
+
+* [LiveScript](http://livescript.net)
+* [Prelude](http://preludels.com)
+* [Brunch](http://brunch.io)
+* [Highcharts](http://highcharts.com/)
 
 Have fun, and keep in mind that autotrader.nl owns the data, not you or me.
