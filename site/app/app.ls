@@ -7,7 +7,7 @@ module.exports = class App
             max: 20000
             step: 500
             values:[2000, 15000]
-            slide: ( event, ui ) ~>
+            change: ( event, ui ) ~>
                 $( '#price-range' ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] )
                 this.update-chart()
         }
@@ -18,7 +18,7 @@ module.exports = class App
             max: 200000
             step: 10000
             values:[10000, 200000]
-            slide: ( event, ui ) ~>
+            change: ( event, ui ) ~>
                 $( '#milage-range' ).val( ui.values[ 0 ] + " km - " + ui.values[ 1 ] + " km" )
                 this.update-chart()
 
@@ -162,6 +162,8 @@ module.exports = class App
     filter: (cars) ->
         price-range = $('#price-slider').slider( "values" )
         milage-range = $('#milage-slider').slider( "values" )
+
+        console.log  _.last(price-range)
 
         _.chain(cars)
             .filter (car) -> _.first(price-range) <= car.price && car.price <= _.last(price-range)
