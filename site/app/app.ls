@@ -163,8 +163,6 @@ module.exports = class App
         price-range = $('#price-slider').slider( "values" )
         milage-range = $('#milage-slider').slider( "values" )
 
-        console.log  _.last(price-range)
-
         _.chain(cars)
             .filter (car) -> _.first(price-range) <= car.price && car.price <= _.last(price-range)
             .filter (car) -> _.first(milage-range) <= car.milage && car.milage <= _.last(milage-range)
