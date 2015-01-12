@@ -16,7 +16,6 @@
     "lodash": "~2.4.1",
     "highcharts-release": "~4.0.4",
     "jquery-ui": "~1.11.2",
-    "bootstrap": "~3.3.1",
     "jquery": "~2.1.3"
   }
 }
