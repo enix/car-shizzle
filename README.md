@@ -19,7 +19,7 @@ In the `site` folder run
 
 ## hack
 
-Calling changing you car preferences 'configuring' would overselling the current state of the code :)
+Calling changing your car preferences 'configuring' would be overselling the current state of the code :)
 
 Take a look at the `scrape` code to change you favourite car and model. Also don't forget the color mapping table in the `site`.
 
