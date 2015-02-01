@@ -30,7 +30,7 @@ explode_paginations = (car) ->
     .then (body) ->
       $ = cheerio.load body.toString('utf8')
       last_page = $('#pager li').last().text() |> parseInt
-      concat [["#{params.path}"], [2 til last_page] |> map (it) -> "#{params.path}%2F#it"]
+      concat [["#{params.path}"], [2 to last_page] |> map (it) -> "#{params.path}%2F#it"]
 
 #
 # create a scape task with the given URL
