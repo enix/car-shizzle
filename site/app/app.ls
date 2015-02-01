@@ -6,7 +6,7 @@ module.exports = class App
             min: 500
             max: 20000
             step: 500
-            values:[2000, 15000]
+            values:[500, 15000]
             change: ( event, ui ) ~>
                 $( '#price-range' ).val( "€" + ui.values[ 0 ] + " - €" + ui.values[ 1 ] )
                 this.update-chart()
@@ -15,9 +15,9 @@ module.exports = class App
         $('#milage-slider').slider {
             range: true
             min: 5000
-            max: 200000
+            max: 300000
             step: 10000
-            values:[10000, 200000]
+            values:[50000, 300000]
             change: ( event, ui ) ~>
                 $( '#milage-range' ).val( ui.values[ 0 ] + " km - " + ui.values[ 1 ] + " km" )
                 this.update-chart()
@@ -34,12 +34,13 @@ module.exports = class App
         'audi-a4'           : 'rgb(250, 164, 58)'
         'audi-a6'           : 'rgb(178, 118, 178)'
         'volvo-v50'         : 'rgb(96, 189, 104)'
-        'volvo-v70'         : 'rgb(178, 145, 47)'
         'volkswagen-passat' : 'rgb(96, 189, 104)'
+
+        'volvo-v70-transmissie--handgeschakeld' : 'rgb(222, 207, 63)'
+        'volvo-v70-transmissie--automaat'       : 'rgb(241, 88, 84)'
     }
 
-    # rgb(222, 207, 63) (yellow)
-    # rgb(241, 88, 84) (red)
+    # rgb(178, 145, 47)
 
 
     drawChart: (series, xLabel) ->

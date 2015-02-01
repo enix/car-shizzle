@@ -1,14 +1,17 @@
 require! {
   'cheerio'
   'queue'
-  'prelude-ls': {map, filter, each, first, last, flatten, concat, group-by}
+  'prelude-ls': {map, filter, each, first, last, flatten, concat, group-by, split, tail, fold1}
   'q-io/http': {request}
   'q'
   'fs'
+  'decompose-url'
 }
 
-cars = ['bmw-3-serie','bmw-5-serie','skoda-octavia','audi-a4','audi-a6','volvo-v70','volvo-v50','volkswagen-passat']
-#cars = ['volkswagen-passat']
+#cars = ['bmw-3-serie','bmw-5-serie','skoda-octavia','audi-a4','audi-a6','volvo-v70','volvo-v50','volkswagen-passat']
+cars =
+  * ['volvo-v70:handgeschakeld', ['transmissie--handgeschakeld']]
+  * ['volvo-v70:automaat', ['transmissie--automaat']]
 
 autotrader_nl = "www.autotrader.nl"
 car_db = []
@@ -16,12 +19,22 @@ car_db = []
 #
 # explode the pagination urls for the given car
 #
-explode_paginations = (car) ->
+explode_paginations = (car_selection) ->
 
-  console.log "processing #car"
+  car-name = car_selection |> first
+  car = car_selection |> first |> split (':') |> first
+
+  options = (last car_selection) ++ do
+                [ 'prijs-tot-10000'
+                  'heeft-nationale-auto-pas--1'
+                  'opties-bevat-cruise-control-en-leren-bekleding']
+
+  options = fold1 ((a,b) -> "#a%2F#b"), options
+
+  console.log "processing #car #{last car_selection}"
 
   params =
-    path: "/auto/#car/carrosserie--stationwagen/brandstof--benzine/?zoekopdracht=transmissie--automaat%2Fsoort-voertuig--alleen-occasions"
+    path: "/auto/#{car}/brandstof--benzine/?zoekopdracht=#options"
     host: autotrader_nl
 
   request params
@@ -43,7 +56,9 @@ scrape_task = (url) ->
   _car_details = ($) ->
 
     _car_type = (url) ->
-      url.split('/')[2]
+      parts = decompose-url "http://#autotrader_nl#url"
+      query = parts.query['zoekopdracht'].split '/'
+      "#{parts.path.1}-#{query.0}"
 
     # euries
     _car_price = (elem) ->
@@ -91,6 +106,7 @@ scrape_task = (url) ->
       url     : $(elem).find('a').attr('href')
 
     result.get()
+
 
   # scrape sequence
   (done) ->
