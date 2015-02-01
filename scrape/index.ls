@@ -133,7 +133,9 @@ q.allSettled(pagination_requests)
       |> each scraper_queue.push _
 
     scraper_queue.start (err) ->
-      result = JSON.stringify(group-by (.type), flatten car_db)
+      cars = flatten car_db
+      console.log "total cars:#{cars.length}"
+      result = JSON.stringify(group-by (.type), cars)
       fs.writeFile "../site/app/assets/data/cars.json", result, (err) ->
         if(err)
           console.log(err)
